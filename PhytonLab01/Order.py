@@ -1,3 +1,6 @@
-def print_line(name_item, len)
-    #print item
-    #make a for loop to print the diference between the len of the line and the len of the item
+class Order:
+    last_number = 0;
+    def __init__(self):
+        self.number = Order.last_number + 1
+
+
