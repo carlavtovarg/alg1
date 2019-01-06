@@ -1,7 +1,6 @@
 class Item:
     qst_tax = 0
     gst_tax = 0
-    #constructor
 
     def __init__(self, sku, name, price, taxable=False):
         self.sku = sku
@@ -32,16 +31,7 @@ class Item:
             line = line + "T"
         return line
 
-# Some test from the code:
-item1= Item(25, "pasta", 100, True)
-item2= Item(50, "cafe", 100)
-print(item1.name)
-print(item1.is_taxable())
-print(item2.calculate_qst())
-print(item2.calculate_gst())
-print(item1.print_item(50))
 
-print(item2.print_item(50))
 
 
 
