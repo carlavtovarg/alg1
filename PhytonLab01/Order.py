@@ -1,5 +1,6 @@
 from Item import Item
 import datetime
+import decimal
 
 
 class Order:
@@ -25,13 +26,29 @@ class Order:
         total_gst = 0
         for x in self.items:
             if x.is_taxable():
-                total_gst += total_gst + x.calculate_gst()
+                total_gst += decimal.Decimal(x.calculate_gst())
 
+    def get_total_qst(self):
+        total_qst = 0
+        for x in self.items:
+            if x.is_taxable():
+                total_qst += decimal.Decimal(x.calculate_qst())
+
+    def total_price(self):
+        total_price = 0
+        for x in self.items:
+            print(x.get_price())
+            total_price += decimal.Decimal(x.get_price())
+        return total_price
+
+    def print_items(self):
+        for x in self.items:
+            x.print_item(50)
+
+    def generate_receipt(self):
 
 New_Order = Order()
 cont = "y"
-print("Order Number: {0}".format(New_Order.sku))
-print("Order Date : {0}".format(New_Order.date_print))
 
 while cont != "n":
     item_sku = input("What is the sku of the item to add? >>")
@@ -45,6 +62,10 @@ while cont != "n":
     cont = input("Add another item? (y/n) >>")
     new_item = Item(item_sku, item_name, item_cost, item_tax)
     New_Order.add_item(new_item)
+
+print("Order Number: {0}".format(New_Order.sku))
+print("Order Date : {0}".format(New_Order.date_print))
+print("Total Price: {0}".format(New_Order.total_price()))
 
 # Some test from the code:
 #item1= Item(25, "pasta", 100, True)
