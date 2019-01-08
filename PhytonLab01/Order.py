@@ -1,6 +1,5 @@
 from Item import Item
 import datetime
-import decimal
 
 
 class Order:
@@ -15,6 +14,7 @@ class Order:
         date_to_print += x.strftime("%p").lower()
         self.date_print = date_to_print
         Order.last_sku_used = self.sku
+        self.gran_total = 0
 
     def add_item(self, item: Item):
         self.items.append(item)
@@ -46,13 +46,21 @@ class Order:
         for x in self.items:
             x.print_item(50)
 
+    def grand_total(self):
+        self.gran_total = float(self.total_price()) + float(self.get_total_qst()) + float(self.get_total_gst())
+        return self.gran_total
+
     def generate_receipt(self):
+        print("\n")
         print("Order Number: {0}".format(self.sku))
         print("Order Date : {0}".format(self.date_print))
+        print("\n")
         self.print_items()
-        print("Sub Total: {0}".format(self.total_price()))
-        print("Total GST : {0}".format(self.get_total_gst()))
-        print("Total QST : {0}".format(self.get_total_qst()))
+        print("\n")
+        print("Sub Total: ${:0,.2f}".format(self.total_price()))
+        print("Total GST : ${:0,.2f}".format(self.get_total_gst()))
+        print("Total QST : ${:0,.2f}".format(self.get_total_qst()))
+        print("Grand Total: ${:0,.2f}".format(self.grand_total()))
 
 
 New_Order = Order()
@@ -61,9 +69,10 @@ cont = "y"
 while cont != "n":
     item_sku = input("What is the sku of the item to add? >>")
     item_name = input("What is the name of the item to add? >>")
-    item_cost = input("How much does the item cost? >>")
-    item_tax_promp = input("Is the item taxable? (Y/N) >>")
-    if item_tax_promp == "y":
+    item_cost = float(input("How much does the item cost? >>"))
+    item_cost = "{:0,.2f}".format(item_cost)
+    item_tax_p = input("Is the item taxable? (Y/N) >>")
+    if item_tax_p == "y":
         item_tax = True
     else:
         item_tax = False
