@@ -3,7 +3,7 @@ from taxes import Taxes
 
 class Item(Taxes):
 
-    def __init__(self, sku, name, price: float, taxable=False):
+    def __init__(self, sku: int, name: str, price: float, taxable: bool):
         self.sku = sku
         self.name = name
         self.__price = price
