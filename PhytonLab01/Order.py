@@ -31,12 +31,9 @@ class Order:
 
     def get_total_qst(self):
         total_qst = 0
-        #print(total_qst)
         for x in self.items:
             if x.is_taxable():
-                #print(x.calculate_qst())
                 total_qst += float(x.calculate_qst())
-               #print("Total QST here:" + str(total_qst))
         return total_qst
 
     def total_price(self):
@@ -76,14 +73,3 @@ while cont != "n":
 
 New_Order.generate_receipt()
 
-
-
-
-
-# Some test from the code:
-#item1= Item(25, "pasta", 100, True)
-#item2= Item(50, "cafe", 100)
-#print(item1.name)
-#print(item1.is_taxable())
-#print(item2.calculate_qst())
-#print(item2.print_item(50))
