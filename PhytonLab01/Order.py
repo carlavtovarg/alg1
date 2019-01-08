@@ -26,19 +26,23 @@ class Order:
         total_gst = 0
         for x in self.items:
             if x.is_taxable():
-                total_gst += decimal.Decimal(x.calculate_gst())
+                total_gst += float(x.calculate_gst())
+        return total_gst
 
     def get_total_qst(self):
         total_qst = 0
+        #print(total_qst)
         for x in self.items:
             if x.is_taxable():
-                total_qst += decimal.Decimal(x.calculate_qst())
+                #print(x.calculate_qst())
+                total_qst += float(x.calculate_qst())
+               #print("Total QST here:" + str(total_qst))
+        return total_qst
 
     def total_price(self):
         total_price = 0
         for x in self.items:
-            print(x.get_price())
-            total_price += decimal.Decimal(x.get_price())
+            total_price += float(x.get_price())
         return total_price
 
     def print_items(self):
@@ -46,6 +50,13 @@ class Order:
             x.print_item(50)
 
     def generate_receipt(self):
+        print("Order Number: {0}".format(self.sku))
+        print("Order Date : {0}".format(self.date_print))
+        self.print_items()
+        print("Sub Total: {0}".format(self.total_price()))
+        print("Total GST : {0}".format(self.get_total_gst()))
+        print("Total QST : {0}".format(self.get_total_qst()))
+
 
 New_Order = Order()
 cont = "y"
@@ -63,9 +74,11 @@ while cont != "n":
     new_item = Item(item_sku, item_name, item_cost, item_tax)
     New_Order.add_item(new_item)
 
-print("Order Number: {0}".format(New_Order.sku))
-print("Order Date : {0}".format(New_Order.date_print))
-print("Total Price: {0}".format(New_Order.total_price()))
+New_Order.generate_receipt()
+
+
+
+
 
 # Some test from the code:
 #item1= Item(25, "pasta", 100, True)

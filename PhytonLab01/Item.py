@@ -1,12 +1,14 @@
+import decimal
 class Item:
-    qst_tax = 0
-    gst_tax = 0
 
-    def __init__(self, sku, name, price, taxable=False):
+
+    def __init__(self, sku, name, price: float, taxable=False):
         self.sku = sku
         self.name = name
         self.__price = price
         self.__taxable = taxable
+        self.qst_tax = 0
+        self.gst_tax = 0
 
     def is_taxable(self):
         return self.__taxable
@@ -15,11 +17,12 @@ class Item:
         return self.__price
 
     def calculate_qst(self):
-        self.qst_tax = self.__price * 9.975 / 100
+        self.qst_tax = float(self.__price) * float(0.09975)
         return self.qst_tax
 
     def calculate_gst(self):
-        self.gst_tax = self.__price * 5 / 100
+
+        self.gst_tax = float(self.__price) * float(0.05)
         return self.gst_tax
 
     def print_item(self, len_line):
@@ -29,7 +32,7 @@ class Item:
         line = self.name + string_points + "$" + str(self.__price)
         if self.__taxable:
             line = line + "T"
-        return line
+        print(line)
 
 
 
