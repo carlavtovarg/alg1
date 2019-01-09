@@ -50,9 +50,9 @@ class Order:
         self.gran_total = float(self.total_price()) + float(self.get_total_qst()) + float(self.get_total_gst())
         return self.gran_total
 
-    def aling_right(self, width, line):
+    #def aling_right(self, width, line):
         #this method don't work yet
-        print('{:>'width'}'.format(*line))
+       # print('{:>'width'}'.format(*line))
 
     def generate_receipt(self):
         print("\n")
@@ -70,8 +70,12 @@ class Order:
 New_Order = Order()
 cont = "y"
 
-while cont != "n":
+while cont != "n" or cont != "N":
     item_sku = input("What is the sku of the item to add? >>")
+    print((item_sku))
+
+    while type(item_sku)!=int:
+        item_sku = input("What is the sku of the item to add? >>")
     item_name = input("What is the name of the item to add? >>")
     item_cost = float(input("How much does the item cost? >>"))
     item_cost = "{:0,.2f}".format(item_cost)
