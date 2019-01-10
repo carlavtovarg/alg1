@@ -3,6 +3,7 @@ import datetime
 
 
 class Order:
+    """this is the class for the order"""
     last_sku_used = 0
 
     def __init__(self):
@@ -51,16 +52,17 @@ class Order:
         return self.gran_total
 
     def generate_receipt(self):
+
         print("\n")
-        print("Order Number: {0}".format(self.sku))
-        print("Order Date : {0}".format(self.date_print))
+        print("Order Number: {0}".format(self.sku).center(50))
+        print("Order Date : {0}".format(self.date_print).center(50))
         print("\n")
         self.print_items()
         print("\n")
-        print("Sub Total: ${:0,.2f}".format(self.total_price()))
-        print("Total GST : ${:0,.2f}".format(self.get_total_gst()))
-        print("Total QST : ${:0,.2f}".format(self.get_total_qst()))
-        print("Grand Total: ${:0,.2f}".format(self.grand_total()))
+        print("Sub Total: ${:0,.2f}".format(self.total_price()).center(50))
+        print("Total GST : ${:0,.2f}".format(self.get_total_gst()).center(50))
+        print("Total QST : ${:0,.2f}".format(self.get_total_qst()).center(50))
+        print("Grand Total: ${:0,.2f}".format(self.grand_total()).center(50))
 
 
 New_Order = Order()

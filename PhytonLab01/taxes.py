@@ -1,5 +1,5 @@
 class Taxes:
-
+    """This class set and get the taxes values"""
     def __init__(self):
         """Those are the percent taxes divided by 100"""
         self.__qst_percent_tax = 0.09975

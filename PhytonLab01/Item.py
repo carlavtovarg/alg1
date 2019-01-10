@@ -1,7 +1,9 @@
+"""in this file we use the class Taxes"""
 from taxes import Taxes
 
 
 class Item(Taxes):
+    """this is the class for the Items"""
 
     def __init__(self, sku: int, name: str, price: float, taxable: bool):
         self.sku = sku
@@ -27,13 +29,14 @@ class Item(Taxes):
         return self.gst_tax
 
     def print_item(self, len_line):
-        part_line = self.name + "$" + str(self.__price)
+        part_line = self.name + "$"
         len_part_line = int(len_line) - len(part_line)
         string_points = "." * int(len_part_line)
         line = self.name + string_points + "$" + str(self.__price)
+        print(line.capitalize(), end="")
         if self.__taxable:
-            line = line + "T"
-        print(line)
+            print("T")
+
 
 
 
