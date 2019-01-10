@@ -71,16 +71,23 @@ cont = "y"
 while cont != "n" and cont != "N":
     item_sku = input("What is the sku of the item to add? >>")
     item_name = input("What is the name of the item to add? >>")
-    item_cost = float(input("How much does the item cost? >>"))
-    item_cost = "{:0,.2f}".format(item_cost)
+    item_cost = input("How much does the item cost? >>")
     item_tax_p = input("Is the item taxable? (Y/N) >>")
+    cont = input("Add another item? (Y/N) >>")
     if item_tax_p == "y":
         item_tax = True
     else:
         item_tax = False
-    cont = input("Add another item? (Y/N) >>")
-    new_item = Item(item_sku, item_name, item_cost, item_tax)
-    New_Order.add_item(new_item)
-
-New_Order.generate_receipt()
+    try:
+        item_cost = float(item_cost)
+        item_cost = "{:0,.2f}".format(item_cost)
+        new_item = Item(item_sku, item_name, item_cost, item_tax)
+        New_Order.add_item(new_item)
+        create_receipt = True
+    except:
+        print("The last item could not be create, please try again")
+        create_receipt = False
+        cont = "y"
+if create_receipt != False:
+    New_Order.generate_receipt()
 

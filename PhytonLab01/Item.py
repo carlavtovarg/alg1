@@ -36,6 +36,8 @@ class Item(Taxes):
         print(line.capitalize(), end="")
         if self.__taxable:
             print("T")
+        else:
+            print("")
 
 
 
