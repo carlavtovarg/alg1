@@ -19,7 +19,6 @@ class Item(Taxes):
         return self.__price
 
     def calculate_qst(self):
-        #self.qst_tax = float(self.__price) * float(0.09975)
         self.qst_tax = float(self.__price) * float(self.get_qst_percent_taxes())
         return self.qst_tax
 
