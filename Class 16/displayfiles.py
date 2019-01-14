@@ -13,11 +13,14 @@ def print_lis(list, opc):
 
 my_list = os.listdir()
 print_lis(my_list)
-dir_number = (input("Enter the directory number you want to list the files>>"))
+dir_number = input("Enter the directory number you want to list the files>>")
 while exit == False:
-    if int(dir_number):
+    if dir_number.isdigit():
         index = int(dir_number) - 1
     elif dir_number == "x":
+        print_lis(ppal_dir)
+    elif dir_number == "..":
+
 
     if os.path.isdir(my_list[index]):
         new_list = os.listdir(my_list[index])
