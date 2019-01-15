@@ -13,6 +13,8 @@ class Item(Taxes):
         self.qst_tax = 0
         self.gst_tax = 0
         super().__init__()
+        #The corect way to do it is:
+        #self.taxes = Taxes()
 
     def is_taxable(self):
         return self.__taxable
