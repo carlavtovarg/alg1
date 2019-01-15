@@ -9,5 +9,5 @@ with open("person.csv", 'rt') as f:
         else:
             print("Student ID: " + row[0] + ", Grade: " + row[1])
 
-        line_counter+=1
+        line_counter += 1
 
