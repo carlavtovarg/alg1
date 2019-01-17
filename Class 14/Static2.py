@@ -1,5 +1,6 @@
 class Item:
     last_sku_used = 0
+
     def __init__(self, name, price, taxable):
         """here with the sku we use the static variable because each time we intantiate the Item, the sku increase."""
         self.sku = Item.last_sku_used + 1
