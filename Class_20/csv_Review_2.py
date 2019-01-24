@@ -1,0 +1,38 @@
+import csv
+line_counter = 1
+cm_convert = 2.54
+Kg_convert = 0.453592
+line = []
+with open ("biostats.csv", 'rt') as f:
+    reader = csv.reader(f)
+    """The next line move the reader to the second register in the file"""
+    next(reader)
+    with open('biostats3.csv', 'w') as f:
+        writer = csv.writer(f)
+        for row in reader:
+            line = ""
+            height = 0
+            weight = 0
+            if line_counter==1:
+                header = "Name,Sex,Age,Height(cm),Weight(Kg)"
+                #line.app "Name"
+
+                #line[1] = "Sex"
+                #line[2] = "Age"
+                #line[3] = "Height(cm)"
+                #line[4] = "Weight(Kg)"
+            else:
+                height = float(row[2]) * cm_convert
+                weight = float(row[3]) * Kg_convert
+                line[0] = row[0]
+                line[1] = row[1]
+                line[2] = row[2]
+                line[3] = round(height, 2)
+                line[4] = round(weight, 2)
+
+            line_counter += 1
+            for row in line:
+                writer.writerow(row)
+
+
+

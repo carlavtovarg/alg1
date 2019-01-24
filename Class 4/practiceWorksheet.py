@@ -40,4 +40,4 @@ elif ex==7:
         for y in range(2):
             for z in range(2):
                 msj=str(x)+str(y)+str(z)
-                print(msj)
+                print(msj.fo)
