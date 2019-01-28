@@ -7,10 +7,10 @@ with open ("biostats.csv", 'rt') as f:
     reader = csv.reader(f)
     """The next line move the reader to the second register in the file"""
     next(reader)
-    with open('biostats3.csv', 'w') as f:
+    with open('biostats1.csv', 'w') as f:
         writer = csv.writer(f)
         for row in reader:
-            line = ""
+            line = []
             height = 0
             weight = 0
             if line_counter==1:
@@ -24,15 +24,15 @@ with open ("biostats.csv", 'rt') as f:
             else:
                 height = float(row[2]) * cm_convert
                 weight = float(row[3]) * Kg_convert
-                line[0] = row[0]
-                line[1] = row[1]
-                line[2] = row[2]
-                line[3] = round(height, 2)
-                line[4] = round(weight, 2)
+                line.append(row[0])
+                line.append(row[1])
+                line.append(row[2])
+                line.append(round(height, 2))
+                line.append(round(weight, 2))
 
             line_counter += 1
-            for row in line:
-                writer.writerow(row)
-
+            #for row in line:
+             #   writer.writerow(row)
+            writer.writerow(line)
 
 
