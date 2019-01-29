@@ -2,7 +2,6 @@ import csv
 
 line_counter = 0
 total_ages = 0
-"""Wue use a set to colec the item type"""
 Female = 0
 Male = 0
 average_age = 0
