@@ -2,12 +2,14 @@ import csv
 csv.register_dialect('myDialect',
 quoting=csv.QUOTE_NONNUMERIC,
 skipinitialspace=True, lineterminator="\n")
+
+
 line_counter = 1
 cm_convert = 2.54
 Kg_convert = 0.453592
 line = []
-with open ("biostats.csv", 'rt') as f:
-    reader = csv.reader(f)
+with open ("biostats.csv", 'rt') as f1:
+    reader = csv.reader(f1)
     """The next line move the reader to the second register in the file"""
     next(reader)
     with open('biostats2.csv', 'w') as f:
