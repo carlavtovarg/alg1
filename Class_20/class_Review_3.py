@@ -42,7 +42,7 @@ class Calculator:
         for a in range(0, x):
             valor = random.randint(y, z)
             self.list.append(valor)
-            print("the value in the position {0} is: {1}".format(a, valor))
+            print("the value in the position {0} of the list is: {1}".format(a, valor))
 
 
 lis1 = Calculator([2, 3, 4, 5])
@@ -51,4 +51,5 @@ print(str(lis1.get_maxim()))
 print(str(lis1.get_minim()))
 lis1.clear()
 lis1.generate_random_list(3, 1, 10)
-print(lis1.get_average())
+print("The average for the new list is:" + str(lis1.get_average()))
+
