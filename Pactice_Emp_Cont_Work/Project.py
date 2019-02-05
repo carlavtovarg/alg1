@@ -105,29 +105,41 @@ class Task:
 
 
 class Project:
-    def __init__(self, id, name, hour_est):
-        self.id = id
-        self.name = name
-        self.hour_est = hour_est
-        self.task = []
+    def __init__(self, id_proj: int, name, hour_est: float):
+        self.id = id_proj
+        self.__name = name
+        self.__hour_est = hour_est
+        self.__tasks = []
 
     def set_task(self, task_id: Task):
-        self.task.append(task_id)
+        self.__tasks.append(task_id)
 
     def set_name(self, name):
-        self.name = name
+        self.__name = name
 
     def set_hours_est(self, hour_est):
-        self.hour_est = hour_est
+        self.__hour_est = hour_est
 
     def get_name(self):
-        return self.name
+        return self.__name
 
     def get_hour_est(self):
-        return self.hour_est
+        return self.__hour_est
 
     def get_task(self):
-        return self.task
+        return self.__tasks
+
+    def get_project_cost(self):
+        total_cost = 0
+        for t in self.__tasks:
+            total_cost += (t.get_duration()) * (t.get_assigned_to().get_cost_p_hour())
+        print("Total Cost:" + str(total_cost))
+
+    def get_hours_completed(self):
+        total_hours = 0.00
+        for t in self.__tasks:
+            total_hours += (t.get_hours_completed())
+        print("Total Hours Completed:" + str(total_hours))
 
 
 emp1 = Employee(75000, 1, "Carla", "Tovar", "2018/12/12")
@@ -135,5 +147,20 @@ emp1 = Employee(75000, 1, "Carla", "Tovar", "2018/12/12")
 print(emp1.get_cost_p_hour())
 
 
-task1 = Task(1, "definicion", "create bla babla", emp1, 18)
+task1 = Task(1, "definition", "create bla babla", emp1, 50)
 print(task1.get_assigned_to().get_id())
+
+task2 = Task(2, "concept", "create bla ", emp1, 50)
+print(task2.get_assigned_to().get_id())
+
+project = Project(1, "House", 200)
+project.set_task(task1)
+print(task1.get_id())
+
+project.set_task(task2)
+print(task2.get_id())
+project.get_project_cost()
+task1.add_time(10)
+task2.add_time(10)
+project.get_hours_completed()
+
