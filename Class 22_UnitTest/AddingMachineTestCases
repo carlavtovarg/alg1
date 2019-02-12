@@ -1,0 +1,16 @@
+#git bwood
+import unittest
+
+from addingMachine import *
+
+
+class Test(unittest.Testcase):
+
+    def test_add_integers(self):
+        num1 = 2
+        num2 = 3
+        expectedResult = 5
+        result = add(num1, num2)
+
+        self.assertEqual(expectedResult, result)
+
